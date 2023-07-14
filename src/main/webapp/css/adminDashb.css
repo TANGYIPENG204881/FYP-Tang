@@ -1,0 +1,80 @@
+.main{
+    margin: 0;
+    padding: 100px;
+    height: 100vh;
+    background-image: url(../images/adminbg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.welcome{
+    position: absolute;
+    left: 53%;
+    top: 60%;
+    transform: translate(-50%,-50%);
+}
+.welcome h3{
+    /*font-size: 6em;*/
+    font-size: 70px;
+    color: rgba(255, 255, 255, 0.3);
+    background-image: url(../images/water.png);
+    text-transform: uppercase;
+    /*letter-spacing: 8px;*/
+    -webkit-background-clip: text;
+    font-weight: 500;
+    animation: wave 30s linear infinite;
+}
+
+.container{
+    margin-top:30px;
+}
+
+.counter-box {
+    display: block;
+    background: #f6f6f6;
+    padding: 40px 20px 37px;
+    text-align: center;
+    border-radius:15px
+}
+
+.counter-box p {
+    margin: 5px 0 0;
+    padding: 0;
+    color: #909090;
+    font-size: 18px;
+    font-weight: 500
+}
+
+.counter-box i {
+    font-size: 60px;
+    margin: 0 0 15px;
+    color: #d2d2d2
+}
+
+.counter {
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+    color: #a2e3dc;
+    line-height: 28px
+}
+
+.counter-box.colored {
+    background: #3acf87;
+}
+
+.counter-box.colored p,
+.counter-box.colored i,
+.counter-box.colored .counter {
+    color: #fff
+}
+
+
+@keyframes wave{
+    from{
+        background-position: 0 0;
+    }
+    to{
+        background-position: 1000px 0;
+    }
+}
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.otsbcs.dao.CourseMapper">
+
+
+    <insert id="addCourse" parameterType="Course">
+        insert into test.course (courseName,courseDuration,coursePrice)
+        values (#{courseName}, #{courseDuration}, #{coursePrice})
+    </insert>
+
+
+    <delete id="deleteCourseById" parameterType="int">
+        delete from test.course where courseID=#{courseID}
+    </delete>
+
+
+    <update id="updateCourse" parameterType="Course">
+        update test.course
+        set courseName = #{courseName},courseDuration = #{courseDuration},coursePrice = #{coursePrice}
+        where courseID=#{courseID}
+    </update>
+
+
+    <select id="queryCourseById" resultType="Course">
+        SELECT * FROM test.course
+        where courseID=#{courseID}
+    </select>
+
+    <!--查询全部client-->
+    <select id="queryAllCourse" resultType="Course">
+        SELECT * FROM test.course
+    </select>
+    <!--按照名字查询client-->
+    <select id="queryCourseByName" resultType="Course">
+        SELECT * FROM test.course where courseName=#{courseName}
+    </select>
+
+</mapper>

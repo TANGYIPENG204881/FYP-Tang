@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body{
+    /* 初始化 取消内外边距 */
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    /* 渐变背景 */
+    background: linear-gradient(125deg,#2c3e50,#27ae60,#2980b9, #ee75ec,#8e44ad);
+    /* 指定背景图像的大小 */
+    background-size: 500%;
+    /* 执行动画：动画名 时长 线性的 无限次播放 */
+    animation: bgAnimation 15s linear infinite;
+}
+/* 定义动画 */
+@keyframes bgAnimation {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+/* Header styles */
+header {
+
+    background-size: cover;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+.droplist{
+    background: #666666;
+    box-shadow: 0 1px 2px #666666;
+    display: none;
+}
+
+li {
+    margin-left: 20px;
+}
+
+li:first-child {
+    margin-left: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Main styles */
+.hero {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 90%;
+    padding: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #333;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #abaaaa;
+    margin-bottom: 40px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #858383;
+}
+footer {
+    color: #fff;
+    padding: 80px;
+    text-align: center;
+}
+
+
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.otsbcs.dao.ApplicantMapper">
+    <insert id="addApplicant" parameterType="Applicant">
+        insert into test.applicant(applicantName, applicantAge, applicantPassword, applicantTelephone, applicantUniversity,
+                                   applicantGPA, applicantTeachingSubject, applicantLink, applicantTeachingTime,
+                                   applicantImg, applicantDescription)
+        values (#{applicantName}, #{applicantAge}, #{applicantPassword}, #{applicantTelephone},
+                #{applicantUniversity}, #{applicantGPA}, #{applicantTeachingSubject}, #{applicantLink}, #{applicantTeachingTime},#{applicantImg},#{applicantDescription})
+    </insert>
+
+    <select id="queryAllApplicant" resultType="Applicant">
+        SELECT * FROM test.applicant
+    </select>
+
+    <select id="queryApplicantById" resultType="Applicant">
+        SELECT * FROM test.applicant
+        where applicantId=#{applicantId}
+    </select>
+
+
+    <delete id="deleteApplicantById" parameterType="int">
+        delete from test.applicant where applicantId=#{applicantId}
+    </delete>
+
+<!--    <insert id="addToTutor" parameterType="Applicant">-->
+<!--        insert into test.tutor (tutorName, tutorAge, tutorPassword, tutorTelephone, tutorUniversity, tutorGPA, tutorTeachingSubject, tutorLink, tutorTeachingTime, tutorImg, tutorDescription)-->
+<!--        SELECT test.applicant.applicantName,test.applicant.applicantAge,test.applicant.applicantPassword,test.applicant.applicantTelephone,-->
+<!--               test.applicant.applicantUniversity,test.applicant.applicantGPA,test.applicant.applicantTeachingSubject,test.applicant.applicantLink,-->
+<!--               test.applicant.applicantTeachingTime,test.applicant.applicantImg,test.applicant.applicantDescription-->
+<!--        where test.applicant.applicantId=#{applicantId}-->
+<!--    </insert>-->
+
+    <insert id="addToTutor" parameterType="Applicant">
+        insert into test.tutor (tutorName, tutorAge, tutorPassword, tutorTelephone, tutorUniversity, tutorGPA, tutorTeachingSubject, tutorLink, tutorTeachingTime, tutorImg, tutorDescription)
+        SELECT t2.applicantName,t2.applicantAge,t2.applicantPassword,t2.applicantTelephone,t2.applicantUniversity,
+               t2.applicantGPA,t2.applicantTeachingSubject,t2.applicantLink,t2.applicantTeachingTime,t2.applicantImg,
+               t2.applicantDescription From test.applicant t2
+        where applicantId=#{applicantId}
+    </insert>
+
+
+
+</mapper>

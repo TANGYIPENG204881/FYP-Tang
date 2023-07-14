@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.otsbcs.dao.FeedbackMapper">
+
+    <insert id="addFeedback" parameterType="Feedback">
+        insert into test.feedback (clientId, clientName, tutorId, tutorName, course,performance, suggestion, feedbackDate)
+        value (#{clientId},#{clientName},#{tutorId},#{tutorName},#{course},#{performance},#{suggestion},#{feedbackDate})
+    </insert>
+
+    <select id="allFeedback" resultType="Feedback">
+        select * from test.feedback
+    </select>
+
+    <select id="tFeedback" resultType="Feedback">
+        select * from test.feedback where tutorName=#{TName}
+    </select>
+
+    <select id="cFeedback" resultType="Feedback">
+        select * from test.feedback where clientName=#{cName}
+    </select>
+
+</mapper>

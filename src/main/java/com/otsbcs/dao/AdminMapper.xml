@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.otsbcs.dao.AdminMapper">
+
+    <select id="adminLogin" resultType="admin">
+        SELECT adminName,adminPassword FROM test.admin
+        WHERE adminName = #{adminName} AND adminPassword = #{adminPassword}
+
+    </select>
+
+    <select id="countClient" resultType="int">
+        select COUNT(*) from test.client
+    </select>
+
+    <select id="countTutor" resultType="int">
+        select COUNT(*) from test.tutor
+    </select>
+
+    <select id="countApp" resultType="int">
+        select COUNT(*) from test.appointment
+    </select>
+
+    <select id="countCourse" resultType="int">
+        select COUNT(*) from test.course
+    </select>
+
+</mapper>

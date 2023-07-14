@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.otsbcs.dao.AppointmentMapper">
+
+    <select id="queryAllApp" resultType="Appointment">
+        SELECT * FROM test.appointment
+    </select>
+
+    <select id="queryAppById" resultType="Appointment">
+        SELECT * FROM test.appointment where appID=#{appID}
+    </select>
+
+    <delete id="deleteAppById" parameterType="int">
+        delete from test.appointment where appID=#{appID}
+    </delete>
+
+    <select id="queryAppByName" resultType="Appointment">
+        SELECT * FROM test.appointment where TutorName=#{TutorName}
+    </select>
+
+
+</mapper>

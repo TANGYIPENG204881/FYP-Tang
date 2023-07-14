@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.otsbcs.dao.TutorMapper">
+
+    <!--增加一个client-->
+    <insert id="addTutor" parameterType="Tutor">
+        insert into test.tutor (tutorName,tutorAge,tutorPassword,tutorTelephone,
+                                tutorUniversity,tutorGPA,tutorTeachingSubject,tutorLink,tutorTeachingTime,tutorImg,tutorDescription)
+        values (#{tutorName}, #{tutorAge}, #{tutorPassword}, #{tutorTelephone},
+                #{tutorUniversity}, #{tutorGPA}, #{tutorTeachingSubject}, #{tutorLink}, #{tutorTeachingTime},#{tutorImg},#{tutorDescription})
+    </insert>
+
+
+    <!--根据id删除一个client-->
+    <delete id="deleteTutorById" parameterType="int">
+        delete from test.tutor where tutorId=#{tutorId}
+    </delete>
+
+    <!--更新client-->
+    <update id="updateTutor" parameterType="Tutor">
+        update test.tutor
+        set tutorName = #{tutorName},tutorAge = #{tutorAge},tutorPassword = #{tutorPassword},
+            tutorTelephone = #{tutorTelephone},tutorUniversity= #{tutorUniversity},
+            tutorGPA= #{tutorGPA},tutorTeachingSubject= #{tutorTeachingSubject},
+            tutorLink= #{tutorLink},tutorTeachingTime= #{tutorTeachingTime},tutorImg= #{tutorImg},tutorDescription=#{tutorDescription}
+        where tutorId=#{tutorId}
+    </update>
+
+    <update id="changePassword" parameterType="Tutor">
+        update test.tutor
+        set tutorPassword=#{tutorPassword}
+        where tutorId=#{Tid}
+    </update>
+
+    <!--根据id查询,返回一个client-->
+    <select id="queryTutorById" resultType="Tutor">
+        SELECT * FROM test.tutor
+        where tutorId=#{tutorId}
+    </select>
+
+
+    <select id="queryTAP" resultType="Tutor">
+        Select test.tutor.tutorId,test.tutor.tutorName,test.tutor.tutorImg,test.tutor.tutorTeachingTime,
+                       test.tutor.tutorLink,test.tutor.tutorTelephone,test.tutor.tutorTeachingSubject
+                       FROM test.tutor
+
+    </select>
+
+    <insert id="insertApp" parameterType="Tutor">
+        Insert into test.appointment(ClientID, ClientName, TutorID, TutorName, TutorImage, TutoringTime, Link, TutorTelephone,CourseName)
+        SELECT test.client.clientID,test.client.clientName,test.tutor.tutorId,test.tutor.tutorName,test.tutor.tutorImg,test.tutor.tutorTeachingTime,
+            test.tutor.tutorLink,test.tutor.tutorTelephone,test.tutor.tutorTeachingSubject
+        FROM test.tutor,test.client
+        WHERE tutorName=#{tutorName} AND clientName=#{clientName}
+    </insert>
+
+    <!--查询全部client-->
+    <select id="queryAllTutor" resultType="Tutor">
+        SELECT * FROM test.tutor
+    </select>
+    <!--按照名字查询client-->
+    <select id="queryTutorByName" resultType="Tutor">
+        SELECT * FROM test.tutor where tutorName=#{tutorName}
+    </select>
+    <!--client登录-->
+    <select id="tutorLogin" resultType="Tutor">
+        SELECT tutorName,tutorPassword FROM test.tutor
+        WHERE tutorName = #{tutorName} AND tutorPassword = #{tutorPassword}
+
+    </select>
+
+    <insert id="tutorRegister" parameterType="Tutor">
+        insert into test.tutor (tutorName,tutorAge,tutorPassword,tutorTelephone,tutorUniversity,
+                                tutorGPA,tutorTeachingSubject,tutorLink,tutorTeachingTime,tutorImg,tutorDescription)
+        values (#{tutorName}, #{tutorAge}, #{tutorPassword}, #{tutorTelephone},
+                #{tutorUniversity},#{tutorGPA},#{tutorTeachingSubject},#{tutorLink},#{tutorTeachingTime},#{tutorImg},#{tutorDescription})
+    </insert>
+
+    <select id="tutorApp" resultType="Appointment">
+        SELECT * FROM test.appointment where TutorName=#{TName}
+    </select>
+
+</mapper>

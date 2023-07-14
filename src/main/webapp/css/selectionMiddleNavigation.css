@@ -1,0 +1,35 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.navigation{
+    background-color: #eaeafa;
+    margin: auto;
+    height: 30px;
+    width: 540px;
+    border-radius:15px;
+
+}
+.navigation ul{
+    list-style: none;
+    border-radius:15px;
+}
+.navigation ul li{
+    float: left;
+}
+.navigation ul li a{
+    text-decoration: none;
+    display: block;
+    width: 180px;
+    height: 30px;
+    text-align: center;
+    color: #564d8d;
+    font-size: 20px;
+}
+.navigation ul li a:hover {
+    background-color: #649386;
+    color: #e1e2ec;
+    border-radius:15px;
+}
+
